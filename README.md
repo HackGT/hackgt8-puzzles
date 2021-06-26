@@ -2,7 +2,7 @@
 
 See notion [todo: insert notion here] for info
 
-puzzles are in their respective dirs, final application is in the app folder
+Puzzle-related code is in respective dirs, final application is in the app folder
 
 Puzzles:
 
