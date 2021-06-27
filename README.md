@@ -6,7 +6,7 @@ Puzzle-related code is in respective dirs, final application is in the app folde
 
 Puzzles:
 
-Finalnametbd (Cipher/Merging Zip Binaries) - Tony
-Welcome to the Makeitplace (Parsing Gcode) - Anish
+- Finalnametbd (Cipher/Merging Zip Binaries) - Tony
+- Welcome to the Makeitplace (Parsing Gcode) - Anish
 
 
