@@ -3,23 +3,18 @@ import express from "express";
 export let puzzleRoutes = express.Router();
 
 
-//PUZZLE 1
-puzzleRoutes.route("/puzzle/merchant")
+puzzleRoutes.route("/add")
     .get(async (req, res) => {
         return res.status(200).send("todo");
     })
+
+
+puzzleRoutes.route("/delete")
     .post(async (req, res) => {
         return res.status(200).send("todo");
     })
 
-
-//PUZZLE 1
-puzzleRoutes.route("/puzzle/makeitplace")
-    .get(async (req, res) => {
-        return res.status(200).send("todo");
-    })
+puzzleRoutes.route("/update")
     .post(async (req, res) => {
         return res.status(200).send("todo");
     })
-
-
