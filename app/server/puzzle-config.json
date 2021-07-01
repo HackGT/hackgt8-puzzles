@@ -1,0 +1,14 @@
+{"puzzles" : [
+    { 
+      "host" : "https://merchant.hack.gt",
+      "id" : "merchant", 
+      "points" : 404
+    },
+    {
+      "host" : "https://makeitplace.hack.gt",
+      "id" : "makeitplace", 
+      "points" : 404
+
+    }
+  ]
+}
