@@ -48,14 +48,27 @@ export function isAuthenticated(request: express.Request, response: express.Resp
 
 
 export function isAdmin(request: express.Request, response: express.Response, next: express.NextFunction): void {
-    response.setHeader("Cache-Control", "private");
-    if (!request.isAuthenticated() || !request.user) {
+    const user = request.user as IUser;
+    const auth = request.headers.authorization;
+    console.log('auth',auth)
+    if (auth && typeof auth === "string" && auth.includes(" ")) {
+        var origin = request.get('origin');
+        const key = auth.split(" ")[1];
+        if (key === process.env.ADMIN_KEY_SECRET) {
+            next();
+        } else {
+            response.status(401).json({
+            error: "Incorrect auth token",
+            });
+        }
+    }
+    else if (!request.isAuthenticated() || !user) {
         if (request.session) {
             request.session.returnTo = request.originalUrl;
         }
         response.redirect("/auth/login");
     } else {
-        if (request.user['admin']==true) {
+        if (user['admin']==true) {
             next();
         } else {
             response.redirect('/auth/login');

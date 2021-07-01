@@ -1,32 +1,35 @@
 import { mongoose, RootDocument } from './database'
 import { IPuzzle } from './Puzzle';
 
+export interface IPuzzleCompleted {
+    puzzle: IPuzzle;
+    date: Date;
+}
+
 export interface IUser extends RootDocument {
     uuid: string;
     email: string;
     name: string;
     token: string;
     admin: boolean;
-    points?: number;
-    puzzlesCompleted?: IPuzzleCompleted[];
+    points: number;
+    puzzlesCompleted: IPuzzleCompleted[];
     completed?: boolean;
     finishDate?: Date;
 }
 
-export interface IPuzzleCompleted {
-    puzzle: IPuzzle;
-    date: Date;
-}
-
 export type IUserMongoose = IUser & mongoose.Document;
+export type IPuzzleCompletedMongoose = IPuzzleCompleted & mongoose.Document;
 
-const PuzzleCompletedSchema = new mongoose.Schema({
+const PuzzleCompletedSchema = {
     puzzle: {
         type: mongoose.Schema.Types.ObjectId,
-        ref: 'Puzzle'
+        ref: 'Puzzle',
+        required: true,
+        unique: true
     },
     date: Date
-})
+}
 
 const UserSchema = new mongoose.Schema({
     uuid: {
@@ -46,9 +49,19 @@ const UserSchema = new mongoose.Schema({
         unique: true
     },
     admin: Boolean,
-    puzzlesSolved: [PuzzleCompletedSchema],
+    puzzlesCompleted: {
+        type: [PuzzleCompletedSchema],
+        default: []
+    },
+    points: {
+        type: Number,
+        required: true,
+        default: 0
+    },
     completed: Boolean,
     finishDate: Date
+},{
+    usePushEach: true
 })
 
 export const User = mongoose.model<IUserMongoose>("User", UserSchema);

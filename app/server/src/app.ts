@@ -18,6 +18,9 @@ app.use(compression());
 app.use(express.json());
 app.use(cors());
 
+app.use(express.json({ limit: "300kb" }));
+app.use(express.urlencoded({ extended: true, limit: "300kb" }));
+
 import { isAuthenticated, isAdmin } from "./auth/auth";
 import { authRoutes } from "./routes/auth";
 import { userRoutes } from "./routes/user";
@@ -34,27 +37,16 @@ process.on("unhandledRejection", err => {
 
 app.use("/auth", authRoutes);
 
-
+app.use("/submitEntry", isAdmin, submitRoutes);
 app.use("/puzzle", isAdmin, puzzleRoutes);
 app.use("/leaderboard", isAuthenticated, leaderboardRoutes);
 app.use("/user", isAuthenticated, userRoutes);
-app.use("/submitEntry", submitRoutes);
 
 
 app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
-
-app.get("*", isAuthenticated, function (req, res) {
-    res.sendFile(
-        path.join(__dirname, "../../client", "index.html"),
-        function (err) {
-            if (err) {
-                res.status(500).send(err);
-            }
-        }
-    );
+app.get("*", isAuthenticated, (request, response) => {
+    response.sendFile(path.join(__dirname, "../../client/build", "index.html"));
 });
-
-
 
 app.listen(PORT, () => {
     console.log(`HackGT Puzzles 2021 system v${VERSION_NUMBER} started on port ${PORT}`);
