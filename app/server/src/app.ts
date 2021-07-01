@@ -18,12 +18,12 @@ app.use(compression());
 app.use(express.json());
 app.use(cors());
 
-import { isAuthenticated } from "./auth/auth";
+import { isAuthenticated, isAdmin } from "./auth/auth";
 import { authRoutes } from "./routes/auth";
 import { userRoutes } from "./routes/user";
-
-
-
+import {puzzleRoutes} from "./routes/puzzle";
+import {submitRoutes} from "./routes/submit"
+import {leaderboardRoutes} from "./routes/leaderboard"
 // Throw and show a stack trace on an unhandled Promise rejection instead of logging an unhelpful warning
 process.on("unhandledRejection", err => {
     throw err;
@@ -35,9 +35,12 @@ process.on("unhandledRejection", err => {
 app.use("/auth", authRoutes);
 app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
 
-app.get("/status", isAuthenticated, (req, res) => {
-    res.sendFile(path.join(__dirname, "../../client/status.html"));
-});
+
+app.use("/puzzle", isAdmin, puzzleRoutes);
+app.use("/leaderboard", isAuthenticated, leaderboardRoutes);
+app.use("/user", isAuthenticated, userRoutes);
+app.use("/submitEntry", submitRoutes);
+
 
 
 app.get("*", function (req, res) {

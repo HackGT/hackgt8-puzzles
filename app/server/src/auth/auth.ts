@@ -46,24 +46,20 @@ export function isAuthenticated(request: express.Request, response: express.Resp
     }
 }
 
-export function isAdmin(request: express.Request, response: express.Response, next: express.NextFunction) {
+
+export function isAdmin(request: express.Request, response: express.Response, next: express.NextFunction): void {
     response.setHeader("Cache-Control", "private");
-
-    const auth = request.headers.authorization;
-    const user = request.user as IUser | undefined;
-
-    if (process.env.PRODUCTION !== "true" || user?.admin) {
-        next();
-    } else if (auth && typeof auth === "string" && auth.includes(" ")) {
-        const key = auth.split(" ")[1].toString();
-
-        if (key === process.env.ADMIN_SECRET) {
+    if (!request.isAuthenticated() || !request.user) {
+        if (request.session) {
+            request.session.returnTo = request.originalUrl;
+        }
+        response.redirect("/auth/login");
+    } else {
+        if (request.user['admin']==true) {
             next();
         } else {
-            response.status(401).json({ error: "Incorrect auth token provided" });
+            response.redirect('/auth/login');
         }
-    } else {
-        response.status(401).json({ error: "No auth token provided" });
     }
 }
 
