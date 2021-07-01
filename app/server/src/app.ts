@@ -30,31 +30,15 @@ process.on("unhandledRejection", err => {
 });
 
 
-app.get("/status", (req, res) => {
-    res.status(200).send("Success");
-});
 
 
 app.use("/auth", authRoutes);
 app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
 
-
-
-app.get("/start", (req, res) => {
+app.get("/status", isAuthenticated, (req, res) => {
+    res.sendFile(path.join(__dirname, "../../client/status.html"));
 });
 
-
-
-app.get("/puzzle", (req, res) => {
-    res.sendFile(
-        path.join(__dirname, "../../client/puzzles", "puzzle.md")
-
-    );
-});
-
-app.post("/answer", (req, res) => {
-
-});
 
 app.get("*", function (req, res) {
     res.sendFile(
