@@ -38,7 +38,7 @@ process.on("unhandledRejection", err => {
 app.use("/auth", authRoutes);
 
 app.use("/submitEntry", isAdmin, submitRoutes);
-app.use("/puzzle", isAdmin, puzzleRoutes);
+app.use("/puzzles", isAdmin, puzzleRoutes);
 app.use("/leaderboard", isAuthenticated, leaderboardRoutes);
 app.use("/user", isAuthenticated, userRoutes);
 
