@@ -33,7 +33,6 @@ process.on("unhandledRejection", err => {
 
 
 app.use("/auth", authRoutes);
-app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
 
 
 app.use("/puzzle", isAdmin, puzzleRoutes);
@@ -42,6 +41,7 @@ app.use("/user", isAuthenticated, userRoutes);
 app.use("/submitEntry", submitRoutes);
 
 
+app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
 
 app.get("*", function (req, res) {
     res.sendFile(
