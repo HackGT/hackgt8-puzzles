@@ -43,7 +43,7 @@ app.use("/submitEntry", submitRoutes);
 
 app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
 
-app.get("*", function (req, res) {
+app.get("*", isAuthenticated, function (req, res) {
     res.sendFile(
         path.join(__dirname, "../../client", "index.html"),
         function (err) {

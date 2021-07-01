@@ -8,8 +8,8 @@ export interface IUser extends RootDocument {
     token: string;
     admin: boolean;
     points?: number;
-    puzzlesCompleted: IPuzzleCompleted[];
-    completed: boolean;
+    puzzlesCompleted?: IPuzzleCompleted[];
+    completed?: boolean;
     finishDate?: Date;
 }
 

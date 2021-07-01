@@ -4,7 +4,8 @@ import { Strategy as OAuthStrategy } from "passport-oauth2";
 import dotenv from "dotenv"
 import fetch from "node-fetch";
 import { Request } from "express";
-import { createNew, IUser, User } from "../schema";
+import { IUser, User } from "../entity/User";
+import { createNew } from "../entity/database";
 
 dotenv.config()
 
