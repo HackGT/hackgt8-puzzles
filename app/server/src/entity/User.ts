@@ -56,6 +56,7 @@ const UserSchema = new mongoose.Schema({
     points: {
         type: Number,
         required: true,
+        index: true,
         default: 0
     },
     completed: Boolean,
