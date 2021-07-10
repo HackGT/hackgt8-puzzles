@@ -16,7 +16,13 @@ export let app = express();
 app.use(morgan("dev"));
 app.use(compression());
 app.use(express.json());
-app.use(cors());
+
+var corsOptions = {
+  origin: 'http://example.com',
+  optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
+}
+
+app.use(cors(corsOptions));
 
 app.use(express.json({ limit: "300kb" }));
 app.use(express.urlencoded({ extended: true, limit: "300kb" }));
@@ -43,9 +49,10 @@ app.use("/leaderboard", isAuthenticated, leaderboardRoutes);
 app.use("/user", isAuthenticated, userRoutes);
 
 
-app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/build")));
+app.use(isAuthenticated, express.static(path.join(__dirname, "../../client/dist")));
 app.get("*", isAuthenticated, (request, response) => {
-    response.sendFile(path.join(__dirname, "../../client/build", "index.html"));
+    response.sendFile(path.join(__dirname, "../../client/dist", "index.html"));
+
 });
 
 app.listen(PORT, () => {

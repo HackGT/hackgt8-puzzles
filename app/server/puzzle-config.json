@@ -1,12 +1,14 @@
 {"puzzles" : [
     { 
+      "title": "A Mysterious Merchant", 
       "host" : "https://merchant.hack.gt",
-      "id" : "merchant", 
+      "puzzle_id" : "merchant", 
       "points" : 404
     },
     {
+      "title": "MAKEITplace", 
       "host" : "https://makeitplace.hack.gt",
-      "id" : "makeitplace", 
+      "puzzle_id" : "makeitplace", 
       "points" : 404
 
     }

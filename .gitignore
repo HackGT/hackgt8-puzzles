@@ -1,4 +1,12 @@
 app/server/node_modules/
 .env
 app/server/build/
-
+app/build/
+app/client/dist/
+*.js.map
+*.d.ts
+node_modules/
+app/client/node_modules/
+app/server/node_modules/
+app/client/.cache
+node_modules

@@ -1,0 +1,23 @@
+{
+  "name": "hackgt-puzzles",
+  "version": "1.0.0",
+  "description": "general site for puzzles",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": "git+https://github.com/HackGT/hackgt8-puzzles.git",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HackGT/hackgt8-puzzles/issues"
+  },
+  "homepage": "https://github.com/HackGT/hackgt8-puzzles#readme",
+  "devDependencies": {
+    "parcel-bundler": "^1.12.5"
+  },
+  "dependencies": {
+    "axios": "^0.21.1"
+  }
+}
