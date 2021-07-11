@@ -14,14 +14,17 @@ for (const faq of faqs) {
 
 function getLeaderboard() {
   axios.get(
-    "http://localhost:3000/leaderboard",
-    {
-      headers: {'Access-Control-Allow-Origin': '*'}
-    }
-  ).then((response) => {console.log(response);})
+    "http://localhost:3000/leaderboard"
+  ).then((response) => {document.getElementById("leaderboard-text").innerHTML = response.text;})
     .catch((error => {console.log(error);}))
 }
 
+function getStatus() {
+  axios.get(
+    "http://localhost:3000/user/status"
+  ).then((response) => {document.getElementById("status-text").innerHTML = response.text;})
+    .catch((error => {console.log(error);}))
+}
 
 document.onload = getLeaderboard();
 
