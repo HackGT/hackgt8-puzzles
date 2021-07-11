@@ -11,10 +11,36 @@ for (const faq of faqs) {
   });
 }
 
-
 function getLeaderboard() {
   axios.get(
     "http://localhost:3000/leaderboard",
+    {
+      headers: {'Access-Control-Allow-Origin': '*'}
+    }
+  ).then((response) => {
+    const table = document.querySelector("#leaderboard-data");
+    console.log(response);
+    const rows = response.data.data.users.map((row, index) => {
+      const rowElement = document.createElement("tr");
+      const rankElement = document.createElement("td");
+      rankElement.textContent = index + 1;
+      rowElement.appendChild(rankElement);
+      const nameElement = document.createElement("td");
+      nameElement.textContent = row.name;
+      rowElement.appendChild(nameElement);
+      const pointElement = document.createElement("td");
+      pointElement.textContent = row.points;
+      rowElement.appendChild(pointElement);
+      return rowElement;
+    });
+    table.innerHTML = rows.map((row) => row.outerHTML).join("");
+  })
+   .catch((error => {console.log(error);}))
+}
+
+function getUserStatus() {
+  axios.get(
+    "http://localhost:3000/user/status",
     {
       headers: {'Access-Control-Allow-Origin': '*'}
     }
@@ -22,7 +48,7 @@ function getLeaderboard() {
     .catch((error => {console.log(error);}))
 }
 
-
+setTimeout( getUserStatus, 5000 );
 document.onload = getLeaderboard();
 
 

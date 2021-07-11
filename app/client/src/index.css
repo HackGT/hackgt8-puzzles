@@ -336,3 +336,7 @@ footer .socials li img {
   margin-right: 24px;
   background: red;
 }
+
+table {
+  border-spacing: var(--base-unit-2);
+}
