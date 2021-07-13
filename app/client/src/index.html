@@ -25,6 +25,7 @@
     <link href="https://css.gg/chevron-down.css" rel="stylesheet" />
     <link rel="icon" href="./assets/favicon.ico" />
     <link rel="stylesheet" href="./index.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.10.6/dayjs.min.js" integrity="sha512-bwD3VD/j6ypSSnyjuaURidZksoVx3L1RPvTkleC48SbHCZsemT3VKMD39KknPnH728LLXVMTisESIBOAb5/W0Q==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="index.js"></script>
   </head>
 
@@ -37,6 +38,7 @@
           </li>
           <li>
             <a href="#status">Your Status</a>
+            <p>
           </li>
           <li>
             <a href="#leaderboard">Leaderboard</a>
@@ -59,7 +61,25 @@
       </section>
 
       <section class="center" id="status">
-        <h2>Status </h2>
+        <h2> Status </h2>
+        <h3 id='name-container'> Welcome, </h3>
+        <p id='description-container'> You currently have <span id='user-points'></span> points</p>
+        <h3> Puzzles Completed </h3>
+        <div id="status-table">
+          <table>
+            <thead>
+              <tr>
+                <th>Puzzle</th>
+                <th>Date Completed</th>
+                <th>Points</th>
+              </tr>
+            </thead>
+            <tbody id='status-table-data'>
+              
+            </tbody>
+          </table>
+        </div>
+
 
       </section>
 

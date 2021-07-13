@@ -50,6 +50,10 @@
   --font-secondary: ServiceStation, sans serif;
 }
 
+a {
+  color: var(--white);
+}
+
 body {
   padding: 0px;
   margin: 0px;
@@ -338,5 +342,5 @@ footer .socials li img {
 }
 
 table {
-  border-spacing: var(--base-unit-2);
+  border-spacing: var(--base-unit-4);
 }

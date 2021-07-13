@@ -11,6 +11,28 @@ for (const faq of faqs) {
   });
 }
 
+function formatDate(date) {
+  function appendLeadingZeroes(n){
+    if(n <= 9){
+      return "0" + n;
+    }
+    return n
+  }
+  
+
+  console.log(date.toString());
+  var ampm = date.getHours() >= 12 ? 'PM' : 'AM';
+  let formatted_date = date.getFullYear() + "-" + 
+                                        appendLeadingZeroes(date.getMonth() + 1) + "-" + 
+                                        appendLeadingZeroes(date.getDate()) + " " + 
+                                        appendLeadingZeroes(date.getHours()) + ":" + 
+                                        appendLeadingZeroes(date.getMinutes()) + ":" + 
+                                        appendLeadingZeroes(date.getSeconds()) + " " +
+                                        ampm;
+  console.log(formatted_date);
+  return formatted_date;
+
+}
 function getLeaderboard() {
   axios.get(
     "http://localhost:3000/leaderboard",
@@ -39,17 +61,46 @@ function getLeaderboard() {
 }
 
 function getUserStatus() {
+
   axios.get(
     "http://localhost:3000/user/status",
     {
       headers: {'Access-Control-Allow-Origin': '*'}
     }
-  ).then((response) => {console.log(response);})
-    .catch((error => {console.log(error);}))
+  ).then((response) => {
+    const table = document.querySelector("#status-table-data");
+    console.log(response.data.data);
+    const rows = response.data.data.user.puzzlesCompleted.map((data, index) => {
+      const rowElement = document.createElement("tr");
+      const puzzleElement = document.createElement("td");
+      const linkElement = document.createElement("a");
+      linkElement.href = data.puzzle.host;
+      linkElement.textContent = data.puzzle.title
+      puzzleElement.appendChild(linkElement);
+      rowElement.appendChild(puzzleElement);
+
+      const dateElement = document.createElement("td");
+      dateElement.textContent = formatDate(new Date(data.date));
+      rowElement.appendChild(dateElement);
+
+      const pointElement = document.createElement("td");
+      pointElement.textContent = data.puzzle.points;
+      rowElement.appendChild(pointElement);
+      return rowElement;
+    });
+    table.innerHTML = rows.map((row) => row.outerHTML).join("");
+    user_field = document.querySelector("#name-container");
+    user_points_field = document.querySelector("#user-points");
+    user_field.innerHTML = 'Welcome, ' + response.data.data.user.name;
+    user_points_field.innerHTML = response.data.data.user.points;
+  })
+   .catch((error => {console.log(error);}))
 }
 
-setTimeout( getUserStatus, 5000 );
-document.onload = getLeaderboard();
+window.onload = function() {
+  getLeaderboard();
+  getUserStatus();
+};
 
 
 
