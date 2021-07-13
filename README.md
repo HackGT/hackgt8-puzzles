@@ -2,7 +2,7 @@
 
 See notion [todo: insert notion here] for info
 
-Puzzle Dashboard
+Puzzle Dashboard!
 
 Puzzles:
 
