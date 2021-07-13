@@ -2,7 +2,7 @@
 
 See notion [todo: insert notion here] for info
 
-Puzzle-related code is in respective dirs, final application is in the app folder
+Puzzle Dashboard
 
 Puzzles:
 
