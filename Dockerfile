@@ -14,5 +14,5 @@ FROM node:12.4-alpine
 COPY --from=0 /usr/src/hackgt8-puzzles/server/ /usr/src/hackgt8-puzzles/server/
 COPY --from=0 /usr/src/hackgt8-puzzles/client/ /usr/src/hackgt8-puzzles/client/
 EXPOSE 3000
-WORKDIR /usr/src/hackgt7-puzzles/server
+WORKDIR /usr/src/hackgt8-puzzles/server
 CMD ["node", "build/app.js"]
