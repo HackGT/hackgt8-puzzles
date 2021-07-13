@@ -6,7 +6,5 @@ Puzzle Dashboard!
 
 Puzzles:
 
-- Finalnametbd (Cipher/Merging Zip Binaries) - Tony
-- Welcome to the Makeitplace (Parsing Gcode) - Anish
 
 
