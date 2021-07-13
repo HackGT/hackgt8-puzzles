@@ -6,7 +6,7 @@ const shell = require('gulp-shell');
 // Tasks relating build
 gulp.task('build:server', shell.task('cd server && yarn build'));
 
-gulp.task('build:client', shell.task('cd client && yarn parcel build src/index.html'));
+gulp.task('build:client', shell.task('cd client && yarn build'));
 
 gulp.task('build', gulp.series(
     'build:server',

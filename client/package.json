@@ -4,7 +4,8 @@
   "description": "general site for puzzles",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "parcel build src/index.html"
   },
   "repository": "git+https://github.com/HackGT/hackgt8-puzzles.git",
   "keywords": [],
