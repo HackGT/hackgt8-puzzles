@@ -17,11 +17,12 @@ leaderboardRoutes.route("/").get(async (req, res) => {
                 points: -1
             }
         }
-    ).select('name points')
+    ).select('displayname points')
     console.log(usersSorted)
     return res.send({ success: true, data: {
         users: usersSorted
     }});
 });
 
-  
+
+
