@@ -1,7 +1,6 @@
 .env
-app/server/build/
-app/build/
-app/client/dist/
+server/build/
+client/dist/
 *.js.map
 *.d.ts
 node_modules/
