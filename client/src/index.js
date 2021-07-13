@@ -1,5 +1,4 @@
 const faqs = document.querySelectorAll(".faq");
-const axios = require('axios');
 
 for (const faq of faqs) {
   const question = faq.querySelector(".question");

@@ -17,8 +17,5 @@
   "homepage": "https://github.com/HackGT/hackgt8-puzzles#readme",
   "devDependencies": {
     "parcel-bundler": "^1.12.5"
-  },
-  "dependencies": {
-    "axios": "^0.21.1"
   }
 }
