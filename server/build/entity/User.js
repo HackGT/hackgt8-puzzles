@@ -19,6 +19,10 @@ var UserSchema = new database_1.mongoose.Schema({
         unique: true
     },
     token: String,
+    displayname: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true

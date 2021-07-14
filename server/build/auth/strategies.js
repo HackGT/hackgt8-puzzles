@@ -119,7 +119,7 @@ var GroundTruthStrategy = (function (_super) {
                     case 1:
                         user = _a.sent();
                         if (!user) {
-                            user = database_1.createNew(User_1.User, __assign(__assign({}, profile), { points: 0, puzzlesCompleted: [], admin: false }));
+                            user = database_1.createNew(User_1.User, __assign(__assign({}, profile), { displayname: anonUser(profile.name), points: 0, puzzlesCompleted: [], admin: false }));
                         }
                         else {
                             user.token = accessToken;
@@ -136,6 +136,14 @@ var GroundTruthStrategy = (function (_super) {
     return GroundTruthStrategy;
 }(passport_oauth2_1.Strategy));
 exports.GroundTruthStrategy = GroundTruthStrategy;
+function anonUser(name) {
+    if (name.includes(" ")) {
+        var nameParts = name.split(" ");
+        var initial = nameParts[nameParts.length - 1].charAt(0);
+        name = nameParts[0].concat(" ", initial, ".");
+    }
+    return name;
+}
 function getExternalPort(req) {
     function defaultPort() {
         return req.protocol === "http" ? 80 : 443;

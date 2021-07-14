@@ -55,25 +55,10 @@ exports.leaderboardRoutes.route("/").get(function (req, res) { return __awaiter(
                     sort: {
                         points: -1
                     }
-                }).select('name points')];
+                }).select('displayname points')];
             case 1:
                 usersSorted = _a.sent();
                 console.log(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
-                usersSorted = usersSorted.concat(usersSorted);
                 return [2, res.send({ success: true, data: {
                             users: usersSorted
                         } })];
