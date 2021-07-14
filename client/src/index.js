@@ -34,7 +34,7 @@ function formatDate(date) {
 }
 function getLeaderboard() {
   axios.get(
-    "http://localhost:3000/leaderboard",
+    "/leaderboard",
     {
       headers: {'Access-Control-Allow-Origin': '*'}
     }
@@ -67,7 +67,7 @@ function getLeaderboard() {
 function getUserStatus() {
 
   axios.get(
-    "http://localhost:3000/user/status",
+    "/user/status",
     {
       headers: {'Access-Control-Allow-Origin': '*'}
     }
