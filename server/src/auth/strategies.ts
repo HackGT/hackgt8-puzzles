@@ -111,6 +111,7 @@ export class GroundTruthStrategy extends OAuthStrategy {
         if (!user) {
             user = createNew<IUser>(User, {
                 ...profile,
+                displayname: anonUser(profile.name),
                 points: 0,
                 puzzlesCompleted: [],
                 admin: false
@@ -122,6 +123,15 @@ export class GroundTruthStrategy extends OAuthStrategy {
         await user.save();
         done(null, user);
     }
+}
+
+function anonUser(name: string) {
+    if (name.includes(" ")) {
+        const nameParts  = name.split(" ");
+        const initial = nameParts[nameParts.length-1].charAt(0);
+        name = nameParts[0].concat(" ", initial, ".");
+    }
+    return name;
 }
 
 function getExternalPort(req: Request): number {

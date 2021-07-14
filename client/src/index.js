@@ -48,7 +48,7 @@ function getLeaderboard() {
       rankElement.textContent = index + 1;
       rowElement.appendChild(rankElement);
       const nameElement = document.createElement("td");
-      nameElement.textContent = row.name;
+      nameElement.textContent = row.displayname;
       rowElement.appendChild(nameElement);
       const pointElement = document.createElement("td");
       pointElement.textContent = row.points;

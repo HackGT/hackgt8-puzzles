@@ -17,24 +17,9 @@ leaderboardRoutes.route("/").get(async (req, res) => {
                 points: -1
             }
         }
-    ).select('name points')
-    console.log(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    usersSorted = usersSorted.concat(usersSorted)
-    return res.send({ success: true, data: {
+    ).select('displayname points')
+console.log(usersSorted)
+   return res.send({ success: true, data: {
         users: usersSorted
     }});
 });

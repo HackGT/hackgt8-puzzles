@@ -10,6 +10,7 @@ export interface IUser extends RootDocument {
     uuid: string;
     email: string;
     name: string;
+    displayname: string;
     token: string;
     admin: boolean;
     points: number;
@@ -39,6 +40,10 @@ const UserSchema = new mongoose.Schema({
         unique: true
     },
     token: String,
+    displayname: {
+        type: String,
+        required: true
+    },
     name: {
         type: String,
         required: true
