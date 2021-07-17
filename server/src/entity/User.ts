@@ -26,8 +26,7 @@ const PuzzleCompletedSchema = {
     puzzle: {
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Puzzle',
-        required: true,
-        unique: true
+        required: true
     },
     date: Date
 }
