@@ -8,11 +8,11 @@ export interface IPuzzleCompleted {
 
 export interface IUser extends RootDocument {
     uuid: string;
-    email: string;
+    email?: string;
     name: string;
     displayname: string;
     token: string;
-    admin: boolean;
+    admin?: boolean;
     points: number;
     puzzlesCompleted: IPuzzleCompleted[];
     completed?: boolean;
@@ -50,7 +50,6 @@ const UserSchema = new mongoose.Schema({
     },
     email: {
         type: String,
-        required: true,
         unique: true
     },
     admin: Boolean,
@@ -60,7 +59,7 @@ const UserSchema = new mongoose.Schema({
     },
     points: {
         type: Number,
-        required: true,
+        required: false,
         index: true,
         default: 0
     },

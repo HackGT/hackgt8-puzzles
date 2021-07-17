@@ -123,6 +123,9 @@ var GroundTruthStrategy = (function (_super) {
                         }
                         else {
                             user.token = accessToken;
+                            user.displayname = anonUser(profile.name);
+                            user.email = profile.email;
+                            user.name = profile.name;
                         }
                         return [4, user.save()];
                     case 2:

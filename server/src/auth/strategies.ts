@@ -6,6 +6,8 @@ import fetch from "node-fetch";
 import { Request } from "express";
 import { IUser, User } from "../entity/User";
 import { createNew } from "../entity/database";
+import { userRoutes } from "routes/user";
+import { anonUser } from "../utils/anon";
 
 dotenv.config()
 
@@ -118,20 +120,15 @@ export class GroundTruthStrategy extends OAuthStrategy {
             });
         } else {
             user.token = accessToken;
-        }
+            user.displayname = anonUser(profile.name);
+            user.email = profile.email;
+            user.name = profile.name;
+            user.uuid = profile.uuid;
+        }    
 
         await user.save();
         done(null, user);
     }
-}
-
-function anonUser(name: string) {
-    if (name.includes(" ")) {
-        const nameParts  = name.split(" ");
-        const initial = nameParts[nameParts.length-1].charAt(0);
-        name = nameParts[0].concat(" ", initial, ".");
-    }
-    return name;
 }
 
 function getExternalPort(req: Request): number {

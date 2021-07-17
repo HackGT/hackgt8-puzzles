@@ -39,7 +39,7 @@ var UserSchema = new database_1.mongoose.Schema({
     },
     points: {
         type: Number,
-        required: true,
+        required: false,
         index: true,
         default: 0
     },

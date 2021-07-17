@@ -60,11 +60,14 @@ exports.submitRoutes.route("/").post(function (req, res) { return __awaiter(void
                 user = _c.sent();
                 console.log(user);
                 if (!user) {
-                    return [2, res.send({
-                            success: false,
-                            error: 'There is no user with this uuid'
-                        })];
+                    user = new User_1.User({
+                        email: ' ',
+                        name: ' ',
+                        displayname: ' ',
+                        uuid: uuid
+                    });
                 }
+                console.log(user);
                 return [4, Puzzle_1.Puzzle.findOne({
                         puzzle_id: puzzle_id
                     })];
@@ -91,6 +94,7 @@ exports.submitRoutes.route("/").post(function (req, res) { return __awaiter(void
                 return [4, user.save().then(function (user) {
                         return res.send({ success: true });
                     }).catch(function (err) {
+                        console.log(err);
                         return res.send({
                             success: false,
                             error: "There was an issue submitting. Try again."
