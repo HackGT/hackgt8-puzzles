@@ -1,0 +1,23 @@
+.tile {
+    width: 100px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    transition: width 1s ease-out 100ms;
+    background: white;
+    min-height: 50px;
+    z-index: 10;
+}
+
+.tile-root {
+    position: relative;
+    min-width: none;
+}
+
+.tile:focus {
+    width: 0px;
+}
+
+.tile:hover {
+    cursor: pointer;
+}
